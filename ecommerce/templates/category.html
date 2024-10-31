@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row mt-3">
+    <div class="col-12">
+    <img src="{% static 'images/banner.jpg' %}" height="500px" width="100%">
+</div></div>
+
+<div class="row mt-3" style="margin-bottom:150px">
+    <div class="col-12">
+        <h2 class="text-center fw-bold mt-4 mb-5 text-light">Our Collections</h2>
+        <p style="text-align:justify;line-height:2;" class="fs-5">Online shopping has revolutionized how people buy goods. With just a few clicks, you can browse and purchase items from the comfort of your home. It offers convenience, saving time and effort. You can compare prices easily and find the best deals. However, there are risks such as security concerns and receiving faulty products. Despite this, the popularity of online shopping continues to grow, with a wide range of products available at your fingertips. It’s a convenient way to shop for necessities or treat yourself to something special without leaving your house.</p>
+    </div>
+    </div>
+
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        {% for i in cat %}
+        <div class="col-sm-4">
+            <div class="card" style="width: 20rem;">
+  <img src="{{i.image.url}}" height="200px" width="100%" class="card-img-top" alt="...">
+  <div class="card-body text-center">
+    <h5 class="card-title">{{i.name}}</h5>
+
+    <a href="{% url 'shop:products' i.id %}" class="btn btn-primary">Products</a>
+  </div>
+</div></div>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}
